@@ -1,5 +1,5 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import City
 from .forms import CityForm
 # Create your views here.
@@ -27,6 +27,6 @@ def index(request):
 
         all_cities.append(city_info)
 
-    context = {'all_info': all_cities, 'form': form}
+    context = {'all_info': reversed(all_cities), 'form': form}
 
     return render(request, 'weather/index.html', context)
